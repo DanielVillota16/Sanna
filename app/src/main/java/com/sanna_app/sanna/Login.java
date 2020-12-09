@@ -44,12 +44,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void goToHomeScreen(FirebaseUser user) {
-        db.collection("users").whereEqualTo("email", user.getEmail()).get().addOnCompleteListener(
+        db.collection("users").document(user.getUid()).get().addOnCompleteListener(
                 task -> {
-                    User u = new User();
-                    for(DocumentSnapshot doc : task.getResult()){
+                    DocumentSnapshot snapshot=task.getResult();
+                    User u = snapshot.toObject(User.class);
+                    /**for(DocumentSnapshot doc : task.getResult()){
                         u = doc.toObject(User.class);
-                    }
+                    }*/
 
                     if(u.getRole() != 0) {
                         Intent i;

@@ -1,6 +1,8 @@
 package com.sanna_app.sanna.model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     private String id,name,photo,description,provider;
     private double price;
     private int quantity;
