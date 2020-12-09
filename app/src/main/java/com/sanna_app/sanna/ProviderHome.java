@@ -57,16 +57,21 @@ public class ProviderHome extends AppCompatActivity implements View.OnClickListe
             case R.id.ToInventoryBtn:
                 Intent i= new Intent(this, InventoryMenu.class);
                 startActivity(i);
+                finish();
                 break;
 
             case  R.id.ToProviderOrderBtn:
                 Intent j= new Intent(this, OrderMenu.class);
                 startActivity(j);
+                finish();
                 break;
 
             case R.id.LogOutProviderBtn:
                 mAuth.signOut();
+                Intent k= new Intent(this,Login.class);
+                startActivity(k);
                 finish();
+                break;
         }
 
     }

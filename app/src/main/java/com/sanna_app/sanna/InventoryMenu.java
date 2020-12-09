@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,7 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
-import com.sanna_app.sanna.list.ProductAdapter;
+import com.sanna_app.sanna.list.ProductProvider.ProductAdapter;
 import com.sanna_app.sanna.model.Product;
 import com.sanna_app.sanna.model.User;
 
@@ -81,9 +80,12 @@ public class InventoryMenu extends AppCompatActivity implements View.OnClickList
             case R.id.AddProductBtn:
                 Intent i= new Intent(this,CreateProduct.class);
                 startActivity(i);
+                finish();
                 break;
 
             case R.id.InventoryReturnBtn:
+                Intent j= new Intent(this, ProviderHome.class);
+                startActivity(j);
                 finish();
                 break;
 

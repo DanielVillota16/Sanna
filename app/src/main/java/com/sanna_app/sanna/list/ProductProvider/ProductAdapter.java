@@ -1,4 +1,4 @@
-package com.sanna_app.sanna.list;
+package com.sanna_app.sanna.list.ProductProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;

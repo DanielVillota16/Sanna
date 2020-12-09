@@ -8,18 +8,20 @@ public class Order {
     private String id,destName;
     private List<String> products;
     private LatLng addressFrom, addressTo;
+    private String providerId;
     private  int status;
 
     public Order() {
     }
 
-    public Order(String id, String destName, List<String> products, LatLng addressFrom, LatLng addressTo, int status) {
+    public Order(String id, String destName, List<String> products, LatLng addressFrom, LatLng addressTo, int status, String providerId) {
         this.id = id;
         this.destName = destName;
         this.products = products;
         this.addressFrom = addressFrom;
         this.addressTo = addressTo;
         this.status = status;
+        this.providerId=providerId;
     }
 
     public String getId() {
@@ -68,5 +70,13 @@ public class Order {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 }
