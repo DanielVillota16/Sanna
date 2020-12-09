@@ -67,7 +67,9 @@ public class InventoryMenu extends AppCompatActivity implements View.OnClickList
                         adapter.addProduct(docProduct);
                     }
                     runOnUiThread(
-                            ()->{tamano.setText(adapter.getItemCount());}
+                            ()->{
+                                tamano.setText(adapter.getItemCount()+"");
+                            }
                     );
                 }
         );

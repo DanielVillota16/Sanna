@@ -19,6 +19,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewModel> {
     private ArrayList<Product> products;
     private OnProductClickListener listener;
 
+    public ProductAdapter(){
+        products = new ArrayList<>();
+    }
+
     public void addProduct(Product p){
         products.add(p);
         notifyDataSetChanged();
