@@ -17,7 +17,7 @@ public class OrderProviderAdapter extends RecyclerView.Adapter<OrderPViewModel> 
     private ArrayList<Order> orders;
     private OnOrderClickListener listener;
 
-    public void OrderProviderAdapter(){
+    public OrderProviderAdapter(){
         orders=new ArrayList<>();
     }
 
