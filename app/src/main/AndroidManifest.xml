@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sanna">
-        <activity android:name=".OrderMenu"></activity>
+        <activity android:name=".addProductActivity"></activity>
+        <activity android:name=".OrderMenu" />
         <activity
             android:name=".CreateProduct"
-            android:label="@string/title_activity_create_product"></activity>
+            android:label="@string/title_activity_create_product" />
         <activity android:name=".InventoryMenu" />
         <activity android:name=".DeliveryHome" />
         <activity android:name=".ProviderHome" />
