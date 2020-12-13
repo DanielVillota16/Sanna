@@ -2,9 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/client_navBar_catalogue"
         android:icon="@drawable/catalogue_icon"
         android:title="Catálogo" />
     <item
+        android:id="@+id/client_navBar_orders"
         android:icon="@drawable/shopping_cart_icon"
         android:title="Pedidos" />
 </menu>
