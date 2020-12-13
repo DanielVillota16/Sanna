@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
 import com.sanna_app.sanna.ClientHome;
 import com.sanna_app.sanna.DeliveryHome;
 import com.sanna_app.sanna.ProviderHome;
@@ -28,7 +30,7 @@ import com.sanna_app.sanna.product.recycler.ProductAdapter;
 public class ClientCatalogue extends Fragment {
 
     private FirebaseFirestore db;
-
+    private ListenerRegistration listener;
 
     private RecyclerView catalogueList;
     private LinearLayoutManager layoutManager;
@@ -56,7 +58,7 @@ public class ClientCatalogue extends Fragment {
         catalogueList = root.findViewById(R.id.client_catalogueRV);
 
         layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
-        productAdapter = new ProductAdapter();
+        productAdapter = new ProductAdapter(this);
 
         catalogueList.setLayoutManager(layoutManager);
         catalogueList.setAdapter(productAdapter);
@@ -68,21 +70,22 @@ public class ClientCatalogue extends Fragment {
 
     private void getProducts() {
 
-        db.collection("products").get().addOnCompleteListener(
-                task -> {
-                    for (DocumentSnapshot doc : task.getResult()) {
-                        Product product = doc.toObject(Product.class);
+        Query query = db.collection("products");
+        listener = query.addSnapshotListener((data, error) -> {
 
+            for (DocumentSnapshot doc : data.getDocuments()) {
+                Product product = doc.toObject(Product.class);
 
-                            if (!productAdapter.getProducts().contains(product)) productAdapter.AddProduct(product);
-
-
-
-                    }
-                });
-
-
+                if (!productAdapter.getProducts().contains(product))
+                    productAdapter.AddProduct(product);
+            }
+        });
     }//closes getProducts methos
 
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        listener.remove();
+    }
 }//closes ClientCatalogue class
