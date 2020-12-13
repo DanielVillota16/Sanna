@@ -2,7 +2,9 @@ package com.sanna_app.sanna;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,7 +47,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-
+        ActivityCompat.requestPermissions(this,new String[]{
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+        }, 1);
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         google = findViewById(R.id.GLogIn);

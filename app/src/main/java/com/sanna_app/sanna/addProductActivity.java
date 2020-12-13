@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,20 +31,18 @@ public class addProductActivity extends AppCompatActivity {
     private TextView name,price,description;
     private ImageView photo;
     private Button addButton;
-    private  static final int GALLERY_CALLBACK=-1;
+    private  static final int GALLERY_CALLBACK=13;
     private FirebaseAuth mAuth;
     private FirebaseStorage storage;
     private FirebaseFirestore db;
     private String path;
+    private Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
-        ActivityCompat.requestPermissions(this,new String[]{
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-        }, 1);
+
         mAuth=FirebaseAuth.getInstance();
         storage= FirebaseStorage.getInstance();
         db= FirebaseFirestore.getInstance();
@@ -57,8 +56,8 @@ public class addProductActivity extends AppCompatActivity {
 
         photo.setOnClickListener(
                 v->{
-                    Intent i=new Intent();
-                    i.setType("/image/*");
+                    Intent i=new Intent(Intent.ACTION_GET_CONTENT);
+                    i.setType("image/*");
                     startActivityForResult(i,GALLERY_CALLBACK);
                 }
         );
@@ -66,26 +65,25 @@ public class addProductActivity extends AppCompatActivity {
         addButton.setOnClickListener(
                 e->{
                     if(name.getText()!="" && description.getText().length()>0 && price.getText().length()>0){
-                        try{
-                            Product np=new Product();
-                            String id= UUID.randomUUID().toString();
-                            FileInputStream is=new FileInputStream(new File(path));
+                        Product np=new Product();
+                        String id= UUID.randomUUID().toString();
+                        //FileInputStream is=new FileInputStream(new File(path));
 
-                            storage.getReference().child("products").child(id).putStream(is).addOnCompleteListener(
-                                    t->{
-                                        if(t.isSuccessful()) {
-                                            np.setId(id);
-                                            np.setName(name.getText().toString());
-                                            np.setDescription(description.getText().toString());
-                                            np.setPhoto(id);
-                                            db.collection("products").document(id).set(np);
-                                            finish();
-                                        }
+                        storage.getReference().child("products").child(id).putFile(uri).addOnCompleteListener(
+                                t->{
+                                    if(t.isSuccessful()) {
+                                        Log.e("zzzzzz","entro");
+                                        np.setId(id);
+                                        np.setName(name.getText().toString());
+                                        np.setDescription(description.getText().toString());
+                                        np.setPhoto(path);
+                                        np.setProvider(mAuth.getUid());
+                                        db.collection("products").document(id).set(np);
+                                        finish();
                                     }
-                            );
-                        }catch (FileNotFoundException fileNotFoundException) {
-                            fileNotFoundException.printStackTrace();
-                        } {
+                                }
+                        );
+                        {
 
                         }
                     }
@@ -98,9 +96,13 @@ public class addProductActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==GALLERY_CALLBACK && resultCode==RESULT_OK){
             Uri pUri=data.getData();
+            uri =pUri;
+            Log.e(">>>>>>>>>>>>>>>>>>>>>", pUri +"");
             path= UtilDomi.getPath(this,pUri);
-            Bitmap bm= BitmapFactory.decodeFile(path);
-            photo.setImageBitmap(bm);
+            Log.e("---------------->", path);
+            //Bitmap bm= BitmapFactory.decodeFile(path);
+            //photo.setImageBitmap(bm);
+            photo.setImageURI(pUri);
         }
     }
 }
