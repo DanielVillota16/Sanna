@@ -1,4 +1,4 @@
-package com.sanna_app.sanna.client;
+package com.sanna_app.sanna.client.order;
 
 import android.os.Bundle;
 
@@ -25,7 +25,9 @@ public class ClientOrders extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_client_orders, container, false);
+        View root = inflater.inflate(R.layout.fragment_client_orders, container, false);
+
+        return root;
     }//closes inflater method
 
 

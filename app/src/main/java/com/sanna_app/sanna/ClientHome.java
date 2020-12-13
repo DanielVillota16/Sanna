@@ -7,11 +7,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.sanna_app.sanna.client.ClientCatalogue;
-import com.sanna_app.sanna.client.ClientOrders;
+import com.sanna_app.sanna.client.catalogue.ClientCatalogue;
+import com.sanna_app.sanna.client.order.ClientOrders;
 
 public class ClientHome extends AppCompatActivity {
 

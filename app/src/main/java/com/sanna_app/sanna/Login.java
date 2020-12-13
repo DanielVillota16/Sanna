@@ -31,26 +31,39 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+        if (mAuth.getCurrentUser() != null) ResumeSession();
+
+        setContentView(R.layout.activity_login);
+
         emailET = findViewById(R.id.emailET);
         passwordET = findViewById(R.id.passwordET);
         loginBtn = findViewById(R.id.loginBtn);
         signUpBtn = findViewById(R.id.signUpBtn);
-        db = FirebaseFirestore.getInstance();
 
         loginBtn.setOnClickListener(this);
         signUpBtn.setOnClickListener(this);
+
     }
+
+    private void ResumeSession() {
+
+        goToHomeScreen(mAuth.getCurrentUser());
+
+    }//closes ResumeSession methos
+
 
     public void goToHomeScreen(FirebaseUser user) {
         db.collection("users").whereEqualTo("id", user.getUid()).get().addOnCompleteListener(
                 task -> {
-                    for(DocumentSnapshot doc : task.getResult()){
+                    for (DocumentSnapshot doc : task.getResult()) {
                         User u = doc.toObject(User.class);
-                        if(u != null) {
+                        if (u != null) {
                             Intent i;
-                            switch (u.getRole()){
+                            switch (u.getRole()) {
                                 case Constants.CLIENT_ROLE:
                                     i = new Intent(this, ClientHome.class);
                                     break;
@@ -72,7 +85,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.loginBtn:
                 String email = emailET.getText().toString(), password = passwordET.getText().toString();
                 mAuth.signInWithEmailAndPassword(email, password)
@@ -82,7 +95,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(">>>", "signInWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
-                                        if(user.isEmailVerified()){
+                                        if (user.isEmailVerified()) {
                                             goToHomeScreen(user);
                                         } else {
                                             Toast.makeText(this, "Debe verificar su cuenta antes de ingresar", Toast.LENGTH_LONG).show();
