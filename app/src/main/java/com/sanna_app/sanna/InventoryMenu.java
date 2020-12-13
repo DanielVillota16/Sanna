@@ -78,7 +78,7 @@ public class InventoryMenu extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.AddProductBtn:
-                Intent i= new Intent(this,CreateProduct.class);
+                Intent i= new Intent(this,addProductActivity.class);
                 startActivity(i);
                 finish();
                 break;
