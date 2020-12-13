@@ -44,30 +44,29 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     }
 
     public void goToHomeScreen(FirebaseUser user) {
-        db.collection("users").whereEqualTo("email", user.getEmail()).get().addOnCompleteListener(
+        db.collection("users").whereEqualTo("id", user.getUid()).get().addOnCompleteListener(
                 task -> {
-                    User u = new User();
                     for(DocumentSnapshot doc : task.getResult()){
-                        u = doc.toObject(User.class);
+                        User u = doc.toObject(User.class);
+                        if(u != null) {
+                            Intent i;
+                            switch (u.getRole()){
+                                case Constants.CLIENT_ROLE:
+                                    i = new Intent(this, ClientHome.class);
+                                    break;
+                                case Constants.PROVIDER_ROLE:
+                                    i = new Intent(this, ProviderHome.class);
+                                    break;
+                                default:
+                                    i = new Intent(this, DeliveryHome.class);
+                                    break;
+                            }
+                            startActivity(i);
+                            this.finish();
+                        } else
+                            Toast.makeText(this, "No se encontró el usuario!", Toast.LENGTH_LONG).show();
+                        break;
                     }
-
-                    if(u.getRole() != 0) {
-                        Intent i;
-                        switch (u.getRole()){
-                            case Constants.CLIENT_ROLE:
-                                i = new Intent(this, ClientHome.class);
-                                break;
-                            case Constants.PROVIDER_ROLE:
-                                i = new Intent(this, ProviderHome.class);
-                                break;
-                            default:
-                                i = new Intent(this, DeliveryHome.class);
-                                break;
-                        }
-                        startActivity(i);
-                        this.finish();
-                    } else
-                        Toast.makeText(this, "No se encontró el usuario!", Toast.LENGTH_LONG).show();
                 });
     }
 
