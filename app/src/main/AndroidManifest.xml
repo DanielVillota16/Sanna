@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sanna_app.sanna">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -14,13 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sanna">
-        <activity android:name=".addProductActivity"></activity>
-        <activity android:name=".OrderMenu" />
-        <activity
-            android:name=".CreateProduct"
-            android:label="@string/title_activity_create_product" />
-        <activity android:name=".InventoryMenu" />
-        <activity android:name=".DeliveryHome" />
+        <activity android:name=".DeliveryHome"></activity>
+        <activity android:name=".ConfigProfile"/>
+        <activity android:name=".ListaPedido"/>
         <activity android:name=".ProviderHome" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ClientHome" />
@@ -31,7 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
