@@ -19,8 +19,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanna_app.sanna.delivery.DeliveryHome;
@@ -44,6 +46,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         ActivityCompat.requestPermissions(this,new String[]{
@@ -164,32 +167,47 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void handleSignInResult(Task<GoogleSignInAccount> task) {
         try{
             GoogleSignInAccount account= task.getResult();
-
-            db.collection("users").document(account.getId()).get().addOnCompleteListener(
-                    t->{
-                        if(t.isSuccessful()){
-                            DocumentSnapshot doc=t.getResult();
-                            User u=doc.toObject(User.class);
-                            sortRole(u.getRole());
-                        }else{
-                            User newU=new User();
-                            newU.setId(account.getId());
-                            newU.setName(account.getDisplayName());
-                            newU.setEmail(account.getEmail());
-                            newU.setAddress("");
-                            newU.setRole(Constants.CLIENT_ROLE);
-                            db.collection("users").document(newU.getId()).set(newU).addOnCompleteListener(
-                                    task2->{
-                                        if(task2.isSuccessful()){
-                                            sortRole(newU.getRole());
+            boolean checked=firebaseAuthWithGoogle(account.getIdToken());
+            if(checked) {
+                db.collection("users").document(mAuth.getCurrentUser().getUid()).get().addOnCompleteListener(
+                        t -> {
+                            if (t.isSuccessful()) {
+                                DocumentSnapshot doc = t.getResult();
+                                User u = doc.toObject(User.class);
+                                sortRole(u.getRole());
+                            } else {
+                                User newU = new User();
+                                newU.setId(mAuth.getCurrentUser().getUid());
+                                newU.setName(account.getDisplayName());
+                                newU.setEmail(account.getEmail());
+                                newU.setAddress("");
+                                newU.setRole(Constants.CLIENT_ROLE);
+                                db.collection("users").document(newU.getId()).set(newU).addOnCompleteListener(
+                                        task2 -> {
+                                            if (task2.isSuccessful()) {
+                                                sortRole(newU.getRole());
+                                            }
                                         }
-                                    }
-                            );
+                                );
+                            }
                         }
-                    }
-            );
+                );
+            }
         }catch (Exception e){
             Toast.makeText(this,""+e.getMessage(),Toast.LENGTH_LONG);
         }
+    }
+
+    private boolean firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential= GoogleAuthProvider.getCredential(idToken,null);
+        final boolean[] response = {false};
+        mAuth.signInWithCredential(credential).addOnCompleteListener(
+                v->{
+                    if(v.isSuccessful()){
+                        response[0] =true;
+                    }
+                }
+        );
+        return response[0];
     }
 }
