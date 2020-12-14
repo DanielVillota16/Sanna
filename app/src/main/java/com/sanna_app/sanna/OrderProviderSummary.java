@@ -11,12 +11,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sanna_app.sanna.list.OrderItemProvider.OrderItemAdapter;
 import com.sanna_app.sanna.model.Order;
 import com.sanna_app.sanna.model.Product;
+
+import java.util.Map;
 
 public class OrderProviderSummary extends AppCompatActivity implements View.OnClickListener, OrderItemAdapter.OnItemClickListener{
 
@@ -27,7 +31,7 @@ public class OrderProviderSummary extends AppCompatActivity implements View.OnCl
     private FirebaseAuth auth;
     private OrderItemAdapter oia;
     private String oId;
-    private Double value;
+    private double value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,6 @@ public class OrderProviderSummary extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_order_provider_summary);
         db=FirebaseFirestore.getInstance();
         auth=FirebaseAuth.getInstance();
-        value=0.0;
         oId= (String) getIntent().getExtras().get("order");
 
         title=findViewById(R.id.titleOrderProvET);
@@ -54,13 +57,6 @@ public class OrderProviderSummary extends AppCompatActivity implements View.OnCl
         accept.setOnClickListener(this);
 
         loadItems();
-        runOnUiThread(
-                ()->{
-                    title.setText("Resumen de la Orden");
-                    orderValue.setText("$"+value);
-                }
-        );
-
     }
 
     private void loadItems() {
@@ -76,6 +72,12 @@ public class OrderProviderSummary extends AppCompatActivity implements View.OnCl
                             oia.addItem(prodOrder);
                         }
                     }
+                }
+        );
+        runOnUiThread(
+                ()->{
+                    title.setText("Resumen de la Orden");
+                    orderValue.setText("$"+value);
                 }
         );
     }
@@ -97,6 +99,17 @@ public class OrderProviderSummary extends AppCompatActivity implements View.OnCl
     }
 
     private void editOrder() {
+        DocumentReference orderRef=db.collection("orders").document(oId);
+        orderRef.get().addOnCompleteListener(
+                t->{
+                    if(t.isSuccessful()){
+                        DocumentSnapshot doc=t.getResult();
+                        Order edited=doc.toObject(Order.class);
+                        edited.setStatus(1);
+                        db.collection("orders").document(oId).set(edited);
+                    }
+                }
+        );
     }
 
     @Override
