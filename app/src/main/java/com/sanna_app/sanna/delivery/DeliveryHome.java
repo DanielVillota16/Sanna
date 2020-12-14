@@ -1,20 +1,20 @@
-package com.sanna_app.sanna;
+package com.sanna_app.sanna.delivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.RemoteViews;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.sanna_app.sanna.R;
 
 public class DeliveryHome extends AppCompatActivity {
 
 
- //   private MapsFragment mapsFragment;
+    private MapsFragment mapsFragment;
     private ProfileFragment profileFragment;
     private BottomNavigationView navbar;
 
@@ -26,10 +26,10 @@ public class DeliveryHome extends AppCompatActivity {
     navbar = findViewById(R.id.navBarR);
 
 
-   // mapsFragment = MapsFragment.newInstance();
+        mapsFragment = MapsFragment.newInstance();
         profileFragment = ProfileFragment.newInstance();
 
-        showFragment(profileFragment);
+        showFragment(mapsFragment);
 
 
         navbar.setOnNavigationItemSelectedListener(
@@ -37,7 +37,7 @@ public class DeliveryHome extends AppCompatActivity {
                     switch (menuItem.getItemId()) {
 
                         case R.id.mapView:
-                       //     showFragment(mapsFragment);
+                            showFragment(mapsFragment);
                             break;
 
                         case R.id.profileView:
