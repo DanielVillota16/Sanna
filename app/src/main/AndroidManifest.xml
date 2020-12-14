@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sanna">
-        <activity android:name=".DeliveryHome"></activity>
+
         <activity android:name=".ConfigProfile"/>
         <activity android:name=".ListaPedido"/>
         <activity android:name=".client.order.ShoppingCartActivity"></activity>
@@ -22,9 +22,7 @@
         <activity android:name=".product.recycler.ProductDetails" />
         <activity android:name=".addProductActivity" />
         <activity android:name=".OrderMenu" />
-        <activity
-            android:name=".CreateProduct"
-            android:label="@string/title_activity_create_product" />
+        <activity android:name=".OrderProviderSummary"/>
         <activity android:name=".InventoryMenu" />
         <activity android:name=".DeliveryHome" />
         <activity android:name=".ProviderHome" />

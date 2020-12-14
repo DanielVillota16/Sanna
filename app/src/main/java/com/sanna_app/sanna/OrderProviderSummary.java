@@ -18,7 +18,7 @@ import com.sanna_app.sanna.list.OrderItemProvider.OrderItemAdapter;
 import com.sanna_app.sanna.model.Order;
 import com.sanna_app.sanna.model.Product;
 
-public class order_provider_summary extends AppCompatActivity implements View.OnClickListener{
+public class OrderProviderSummary extends AppCompatActivity implements View.OnClickListener, OrderItemAdapter.OnItemClickListener{
 
     private TextView title, orderValue;
     private RecyclerView items;
@@ -26,7 +26,7 @@ public class order_provider_summary extends AppCompatActivity implements View.On
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private OrderItemAdapter oia;
-    private Order order;
+    private String oId;
     private Double value;
 
     @Override
@@ -36,7 +36,7 @@ public class order_provider_summary extends AppCompatActivity implements View.On
         db=FirebaseFirestore.getInstance();
         auth=FirebaseAuth.getInstance();
         value=0.0;
-        order= (Order) getIntent().getExtras().get("o");
+        oId= (String) getIntent().getExtras().get("o");
 
         title=findViewById(R.id.titleOrderProvET);
         orderValue=findViewById(R.id.priceOrderProvET);
@@ -45,6 +45,7 @@ public class order_provider_summary extends AppCompatActivity implements View.On
         accept=findViewById(R.id.acceptOrderProvBtn);
 
         oia=new OrderItemAdapter();
+        oia.setListener(this);
         items.setHasFixedSize(true);
         items.setAdapter(oia);
         LinearLayoutManager manager=new LinearLayoutManager(this);
@@ -53,12 +54,18 @@ public class order_provider_summary extends AppCompatActivity implements View.On
         accept.setOnClickListener(this);
 
         loadItems();
+        runOnUiThread(
+                ()->{
+                    title.setText("Resumen de la Orden");
+                    orderValue.setText("$"+value);
+                }
+        );
 
     }
 
     private void loadItems() {
         value=0.0;
-        Query itemRef=db.collection("orders").document(order.getId()).collection("products");
+        Query itemRef=db.collection("orders").document(oId).collection("products");
         itemRef.get().addOnCompleteListener(
                 task -> {
                     if(task.isSuccessful()){
@@ -71,14 +78,6 @@ public class order_provider_summary extends AppCompatActivity implements View.On
                     }
                 }
         );
-
-        runOnUiThread(
-                ()->{
-                    title.setText("Resumen de la Orden");
-                    orderValue.setText("$"+value);
-                }
-        );
-
     }
 
     @Override
@@ -98,5 +97,10 @@ public class order_provider_summary extends AppCompatActivity implements View.On
     }
 
     private void editOrder() {
+    }
+
+    @Override
+    public void OnItemClick(Order o) {
+
     }
 }

@@ -6,6 +6,7 @@ import com.sanna_app.sanna.constants.Constants;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
 public class Order implements Serializable {
     private String id, destName, providerId, clientId;
     private LatLng addressFrom, addressTo;

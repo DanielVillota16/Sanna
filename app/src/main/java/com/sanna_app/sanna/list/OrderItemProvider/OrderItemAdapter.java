@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sanna_app.sanna.R;
+import com.sanna_app.sanna.list.OrderProvider.OrderProviderAdapter;
+import com.sanna_app.sanna.model.Order;
 import com.sanna_app.sanna.model.Product;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemViewModel> {
 
     private ArrayList<Product> items;
+    private OnItemClickListener listener;
 
     public void addItem(Product p){
         items.add(p);
@@ -45,5 +48,11 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemViewModel> {
     @Override
     public int getItemCount() {
         return items.size();
+    }
+
+    public void setListener(OnItemClickListener listener){this.listener=listener;}
+
+    public interface OnItemClickListener{
+        void OnItemClick(Order o);
     }
 }

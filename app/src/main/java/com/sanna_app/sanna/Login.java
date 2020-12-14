@@ -165,7 +165,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void handleSignInResult(Task<GoogleSignInAccount> task) {
         try{
             GoogleSignInAccount account= task.getResult();
-            
+
             db.collection("users").document(account.getId()).get().addOnCompleteListener(
                     t->{
                         if(t.isSuccessful()){
