@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
+
     <style name="buttons" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/buttonstyles</item>
     </style>
@@ -13,5 +14,16 @@
         <item name="android:layout_width">267dp</item>
         <item name="android:layout_height">45dp</item>
     </style>
-    
+
+    <style name="addproductcircle" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/addbuttoncircle</item>
+    </style>
+
+    <style name="Cancelbutoom" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">#4FD1CA</item>
+        <item name="android:background">@drawable/cancelbutoonbackgraund</item>
+    </style>
+
+
 </resources>

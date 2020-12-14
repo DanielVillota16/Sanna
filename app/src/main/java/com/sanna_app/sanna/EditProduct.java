@@ -1,5 +1,6 @@
 package com.sanna_app.sanna;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -81,9 +83,21 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
 
             case R.id.deletProductProviderBtn:
 
-                firestore.collection("products").document(product.getId()).delete();
-                Intent j = new Intent(this, InventoryMenu.class);
-                startActivity(j);
+                AlertDialog.Builder alerta = new AlertDialog.Builder(this).setMessage("estaseguro de eliminar este producto");
+                alerta.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        firestore.collection("products").document(product.getId()).delete();
+                        Intent j = new Intent(getApplicationContext(), InventoryMenu.class);
+                        startActivity(j);
+                    }
+                });
+
+                AlertDialog titulo = alerta.create();
+                titulo.setTitle("¡Alerta!");
+                titulo.show();
+
+
                 break;
 
             case R.id.safeProductBtn:

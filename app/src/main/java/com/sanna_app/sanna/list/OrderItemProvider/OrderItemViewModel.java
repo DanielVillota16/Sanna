@@ -29,4 +29,5 @@ public class OrderItemViewModel extends RecyclerView.ViewHolder{
     public TextView getPrice() {
         return price;
     }
+
 }
