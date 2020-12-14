@@ -1,5 +1,6 @@
 package com.sanna_app.sanna.client.order;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +35,7 @@ public class ClientOrders extends Fragment {
     private OrderAdapter orderAdapter;
     private String idCurrentUser;
     private FirebaseAuth auth;
+    private Button goToCartBtn;
 
     public static ClientOrders newInstance() {
         ClientOrders fragment = new ClientOrders();
@@ -53,9 +56,15 @@ public class ClientOrders extends Fragment {
         orderAdapter = new OrderAdapter(this);
         clientOrdersList.setLayoutManager(layoutManager);
         clientOrdersList.setAdapter(orderAdapter);
+        goToCartBtn = root.findViewById(R.id.goToCartBtn);
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         idCurrentUser = auth.getCurrentUser().getUid();
+
+        goToCartBtn.setOnClickListener((v) -> {
+            Intent i = new Intent(getContext(), ShoppingCartActivity.class);
+            startActivity(i);
+        });
         getOrders();
         return root;
     }//closes inflater method

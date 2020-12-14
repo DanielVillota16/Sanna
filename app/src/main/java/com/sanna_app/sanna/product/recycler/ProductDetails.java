@@ -11,13 +11,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.sanna_app.sanna.R;
 
 import com.sanna_app.sanna.client.order.CurrentOrders;
+import com.sanna_app.sanna.constants.Constants;
+import com.sanna_app.sanna.model.Order;
 import com.sanna_app.sanna.model.Product;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class ProductDetails extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,7 +42,7 @@ public class ProductDetails extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_product_details);
 
         product = (Product) getIntent().getSerializableExtra("Product");
-
+        currentOrder = CurrentOrders.getInstance();
         GetViewReferences();
 
         FirebaseStorage.getInstance().getReference().child("products").child(product.getId()).getDownloadUrl()
@@ -51,7 +58,6 @@ public class ProductDetails extends AppCompatActivity implements View.OnClickLis
         productDescription.setText(product.getDescription());
         productPrice.setText("$" + product.getPrice());
 
-        currentOrder = CurrentOrders.getInstance();
         addToCartBtn.setOnClickListener(this);
 
     }//closes onCreate method
@@ -71,7 +77,10 @@ public class ProductDetails extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case  R.id.addToCartBtn:
-                currentOrder.getOrders().get(product.getProvider()).getProducts().add(product);
+                ArrayList<Product> products = new ArrayList<>();
+                products.add(product);
+                Order order = new Order(UUID.randomUUID().toString(), "TEST", null, null, null, null,products, Constants.PENDING);
+                currentOrder.getOrders().put(product.getProvider(),order);
                 break;
         }
     }
