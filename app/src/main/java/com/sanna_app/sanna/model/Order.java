@@ -1,24 +1,29 @@
 package com.sanna_app.sanna.model;
 
 import com.google.type.LatLng;
+import com.sanna_app.sanna.constants.Constants;
 
-import java.util.List;
+import java.io.Serializable;
+import java.util.ArrayList;
 
-public class Order {
-    private String id,destName;
-    private List<String> products;
+
+public class Order implements Serializable {
+    private String id, destName, providerId, clientId;
     private LatLng addressFrom, addressTo;
+    private ArrayList<Product> products;
     private  int status;
 
     public Order() {
     }
 
-    public Order(String id, String destName, List<String> products, LatLng addressFrom, LatLng addressTo, int status) {
+    public Order(String id, String destName, String providerId, String clientId, LatLng addressFrom, LatLng addressTo, ArrayList<Product> products, int status) {
         this.id = id;
         this.destName = destName;
-        this.products = products;
+        this.providerId = providerId;
+        this.clientId = clientId;
         this.addressFrom = addressFrom;
         this.addressTo = addressTo;
+        this.products = products;
         this.status = status;
     }
 
@@ -38,12 +43,20 @@ public class Order {
         this.destName = destName;
     }
 
-    public List<String> getProducts() {
-        return products;
+    public String getProviderId() {
+        return providerId;
     }
 
-    public void setProducts(List<String> products) {
-        this.products = products;
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 
     public LatLng getAddressFrom() {
@@ -62,6 +75,14 @@ public class Order {
         this.addressTo = addressTo;
     }
 
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
+    }
+
     public int getStatus() {
         return status;
     }
@@ -69,4 +90,13 @@ public class Order {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public static String statusToString(int status){
+        return status == Constants.PENDING?"Pendiente":
+               status == Constants.ACCEPTED?"ACEPTADA":
+               status == Constants.REJECTED?"Rechazada":
+               status == Constants.ON_THE_WAY?"En camino":
+               "Entregada";
+    }
+
 }

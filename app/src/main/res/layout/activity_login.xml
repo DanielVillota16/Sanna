@@ -8,10 +8,12 @@
 
     <EditText
         android:id="@+id/emailET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@android:style/Widget.Material.EditText"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
         android:layout_marginTop="60dp"
         android:ems="10"
+        android:hint="Correo"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -20,22 +22,24 @@
 
     <EditText
         android:id="@+id/passwordET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
+        android:hint="Contraseña"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailET" />
 
-    <TextView
+    <ImageView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="177dp"
+        android:layout_height="158dp"
         android:layout_marginTop="108dp"
-        android:text="Login"
+        android:background="@drawable/logo"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,9 +47,10 @@
 
     <Button
         android:id="@+id/loginBtn"
+        style="@style/SecondButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="35dp"
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -54,12 +59,23 @@
 
     <Button
         android:id="@+id/signUpBtn"
+        style="@style/SecondButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+
         android:text="Sign up"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
-        app:layout_constraintVertical_bias="0.219" />
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/GLogIn"
+        android:layout_width="247dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpBtn"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
