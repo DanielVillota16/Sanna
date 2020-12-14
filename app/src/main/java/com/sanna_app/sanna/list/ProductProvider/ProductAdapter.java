@@ -45,6 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewModel> {
     public void onBindViewHolder(@NonNull ProductViewModel holder, int position) {
         holder.getpName().setText(products.get(position).getName());
         holder.getpPrice().setText("$"+products.get(position).getPrice());
+        holder.getProductBtn().setOnClickListener(v->{listener.onProductClick(products.get(position));});
         FirebaseStorage.getInstance().getReference().child("products").child(products.get(position).getId()).getDownloadUrl()
                 .addOnCompleteListener(
                         task -> {

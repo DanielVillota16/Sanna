@@ -71,7 +71,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         loginBtn.setOnClickListener(this);
         signUpBtn.setOnClickListener(this);
         google.setOnClickListener(this);
+        //Dummy t1=new Dummy();
     }
+
 
     private void ResumeSession() {
 
@@ -166,6 +168,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private void handleSignInResult(Task<GoogleSignInAccount> task) {
         try{
             GoogleSignInAccount account= task.getResult();
+            
             db.collection("users").document(account.getId()).get().addOnCompleteListener(
                     t->{
                         if(t.isSuccessful()){

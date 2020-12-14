@@ -1,18 +1,23 @@
 package com.sanna_app.sanna;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.sanna_app.sanna.list.OrderItemProvider.OrderItemAdapter;
 import com.sanna_app.sanna.list.OrderProvider.OrderProviderAdapter;
 import com.sanna_app.sanna.model.Order;
 import com.sanna_app.sanna.model.Product;
@@ -71,7 +76,9 @@ public class OrderMenu extends AppCompatActivity implements View.OnClickListener
 
     @Override
     public void OnOrderClick(Order o) {
-        //Hay que crear un Dialog que contenga los Productos
-
+        Intent i=new Intent(this,order_provider_summary.class);
+        i.putExtra("order",o);
+        startActivity(i);
     }
+
 }

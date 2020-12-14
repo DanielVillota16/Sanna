@@ -2,9 +2,10 @@ package com.sanna_app.sanna.model;
 
 import com.google.type.LatLng;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Order {
+public class Order implements Serializable {
     private String id,destName;
     private List<String> products;
     private LatLng addressFrom, addressTo;
