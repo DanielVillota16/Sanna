@@ -35,8 +35,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< Updated upstream
         <activity android:name=".MainActivity">
         </activity>
+=======
+        <activity android:name=".MainActivity" />
+        <activity android:name=".EditProduct"/>
+>>>>>>> Stashed changes
     </application>
 
 </manifest>
