@@ -98,11 +98,8 @@ public class InventoryMenu extends AppCompatActivity implements View.OnClickList
     public void onProductClick(Product p) {
         Intent i= new Intent(this, EditProduct.class);
         i.putExtra("product", p);
-<<<<<<< Updated upstream
-        startActivity(i);*/
-=======
         startActivity(i);
 
->>>>>>> Stashed changes
+
     }
 }
