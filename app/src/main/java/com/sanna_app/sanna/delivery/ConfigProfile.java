@@ -1,11 +1,10 @@
-package com.sanna_app.sanna.client.delivery;
+package com.sanna_app.sanna.delivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.EditText;
 
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sanna_app.sanna.R;
 import com.sanna_app.sanna.model.User;
 

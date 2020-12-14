@@ -16,8 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sanna">
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAuiL9oXwwJUqMZJfR8QzWOeX5OgX5Ncjc"/>
-        <activity android:name=".ConfigProfile"/>
-        <activity android:name=".ListaPedido"/>
+
         <activity android:name=".client.order.ShoppingCartActivity"></activity>
         <activity android:name=".client.order.OrderDetailsActivity" />
         <activity android:name=".product.recycler.ProductDetails" />
@@ -25,7 +24,12 @@
         <activity android:name=".OrderMenu" />
         <activity android:name=".OrderProviderSummary"/>
         <activity android:name=".InventoryMenu" />
-        <activity android:name=".DeliveryHome" />
+
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAuiL9oXwwJUqMZJfR8QzWOeX5OgX5Ncjc"/>
+        <activity android:name=".delivery.DeliveryHome"></activity>
+        <activity android:name=".delivery.ConfigProfile"/>
+        <activity android:name=".delivery.ListaPedido"/>
         <activity android:name=".ProviderHome" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ClientHome" />
@@ -38,7 +42,6 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".EditProduct"/>
     </application>
 
 </manifest>

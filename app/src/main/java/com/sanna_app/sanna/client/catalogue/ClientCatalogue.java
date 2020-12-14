@@ -1,28 +1,19 @@
 package com.sanna_app.sanna.client.catalogue;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.sanna_app.sanna.ClientHome;
-import com.sanna_app.sanna.DeliveryHome;
-import com.sanna_app.sanna.ProviderHome;
 import com.sanna_app.sanna.R;
-import com.sanna_app.sanna.constants.Constants;
 import com.sanna_app.sanna.model.Product;
-import com.sanna_app.sanna.model.User;
-import com.sanna_app.sanna.order.recycler.OrderAdapter;
 import com.sanna_app.sanna.product.recycler.ProductAdapter;
 
 public class ClientCatalogue extends Fragment {
@@ -56,7 +47,7 @@ public class ClientCatalogue extends Fragment {
         catalogueList = root.findViewById(R.id.client_catalogueRV);
 
         layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
-        productAdapter = new ProductAdapter();
+        productAdapter = new ProductAdapter(this);
 
         catalogueList.setLayoutManager(layoutManager);
         catalogueList.setAdapter(productAdapter);
