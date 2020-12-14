@@ -36,15 +36,15 @@ public class OrderProviderSummary extends AppCompatActivity implements View.OnCl
         db=FirebaseFirestore.getInstance();
         auth=FirebaseAuth.getInstance();
         value=0.0;
-        oId= (String) getIntent().getExtras().get("o");
+        oId= (String) getIntent().getExtras().get("order");
 
         title=findViewById(R.id.titleOrderProvET);
         orderValue=findViewById(R.id.priceOrderProvET);
         items=findViewById(R.id.ProdOrderProvRV);
-        wait=findViewById(R.id.cancelOrderPorcBtn);
-        accept=findViewById(R.id.acceptOrderProvBtn);
+        wait=findViewById(R.id.cancelOrderProviderBtn);
+        accept=findViewById(R.id.acceptOrderProviderBtn);
 
-        oia=new OrderItemAdapter();
+        oia = new OrderItemAdapter();
         oia.setListener(this);
         items.setHasFixedSize(true);
         items.setAdapter(oia);
@@ -83,12 +83,12 @@ public class OrderProviderSummary extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.cancelOrderPorcBtn:
+            case R.id.cancelOrderProviderBtn:
                 Intent i= new Intent(this,OrderMenu.class);
                 startActivity(i);
                 break;
                 
-            case R.id.acceptOrderProvBtn:
+            case R.id.acceptOrderProviderBtn:
                 editOrder();
                 Intent j= new Intent(this,OrderMenu.class);
                 startActivity(j);

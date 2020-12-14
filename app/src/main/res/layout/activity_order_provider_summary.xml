@@ -32,18 +32,16 @@
         app:layout_constraintTop_toBottomOf="@+id/titleOrderProvET" />
 
     <Button
-        android:id="@+id/cancelOrderPorcBtn"
+        android:id="@+id/cancelOrderProviderBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Mas Tarde"
-        app:layout_constraintBottom_toBottomOf="@+id/acceptOrderProvBtn"
-        app:layout_constraintEnd_toStartOf="@+id/AcceptOrderProvBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/AcceptOrderProvBtn" />
+        app:layout_constraintBottom_toBottomOf="@+id/acceptOrderProviderBtn"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/acceptOrderProvBtn"
+        android:id="@+id/acceptOrderProviderBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

@@ -19,6 +19,10 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemViewModel> {
     private ArrayList<Product> items;
     private OnItemClickListener listener;
 
+    public OrderItemAdapter(){
+        items = new ArrayList<>();
+    }
+
     public void addItem(Product p){
         items.add(p);
         notifyDataSetChanged();
