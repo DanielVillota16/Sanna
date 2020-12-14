@@ -45,6 +45,7 @@ public class OrderProviderAdapter extends RecyclerView.Adapter<OrderPViewModel> 
         holder.getTittle().setText("Orden #"+(position+1));
         holder.getOrderBtn().setOnClickListener(
                 v->listener.OnOrderClick(orders.get(position))
+
         );
     }
 

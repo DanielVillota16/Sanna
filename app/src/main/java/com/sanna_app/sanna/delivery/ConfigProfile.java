@@ -3,6 +3,7 @@ package com.sanna_app.sanna.delivery;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,7 +19,7 @@ import com.sanna_app.sanna.model.User;
 public class ConfigProfile extends AppCompatActivity {
 
     private EditText name, email, direccion;
-        private User user1;
+    private User user1;
     private String nombre, correo, direc;
     private Button cerrar;
     private FirebaseAuth mAuth;
@@ -61,9 +62,10 @@ public class ConfigProfile extends AppCompatActivity {
 
                      nombre =  name.getText().toString();
                      correo =  email.getText().toString();
+
                      direc = direccion.getText().toString();
 
-editUserDatabase();
+                        editUserDatabase();
 
                     }
                 );
@@ -74,6 +76,7 @@ editUserDatabase();
 
     private void editUserDatabase() {
         user1.setName(nombre);
+
         user1.setEmail(correo);
         user1.setAddress(direc);
 
