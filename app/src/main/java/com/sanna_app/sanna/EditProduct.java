@@ -74,6 +74,18 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.cancelSafeProductBtn:
+                Intent k = new Intent(this, InventoryMenu.class);
+                startActivity(k);
+                break;
+
+            case R.id.deletProductProviderBtn:
+
+                firestore.collection("products").document(product.getId()).delete();
+                Intent j = new Intent(this, InventoryMenu.class);
+                startActivity(j);
+                break;
+
             case R.id.safeProductBtn:
                 if(suchNameProductTxt.getText().length() > 0 && suchPriceProductTxt.getText().length() > 0 && suchDescriptioProductTxt.getText().length() > 0){
                     Map<String,Object> map =new HashMap<>();
