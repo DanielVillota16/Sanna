@@ -9,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
+import com.sanna_app.sanna.Login;
 import com.sanna_app.sanna.R;
 import com.sanna_app.sanna.model.User;
 
@@ -23,7 +26,10 @@ public class ProfileFragment extends Fragment {
 
 private Button btnlist;
 private Button btnConfig;
+private Button cerrar;
+private TextView name;
 private User user;
+    private FirebaseAuth mAuth;
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -51,7 +57,12 @@ private User user;
 
         btnlist =  root.findViewById(R.id.btnpedidos);
         btnConfig = root.findViewById(R.id.btnconfig);
+        cerrar= root.findViewById(R.id.btnCerrar);
+        name = root.findViewById(R.id.nombre);
+        mAuth = FirebaseAuth.getInstance();
 
+
+        name.setText(user.getName());
 
         btnlist.setOnClickListener(
                 (v)->{
@@ -65,6 +76,15 @@ private User user;
                     Intent i = new Intent(getActivity(), ConfigProfile.class);
                     i.putExtra("user", user);
                     startActivity(i);
+                }
+        );
+
+        cerrar.setOnClickListener(
+                (v)->{
+                    mAuth.signOut();
+                    Intent k= new Intent(getActivity(), Login.class);
+                    startActivity(k);
+
                 }
         );
 

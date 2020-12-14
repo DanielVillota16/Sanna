@@ -2,18 +2,17 @@ package com.sanna_app.sanna.delivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.sanna_app.sanna.Login;
 import com.sanna_app.sanna.R;
-import com.sanna_app.sanna.constants.Constants;
 import com.sanna_app.sanna.model.User;
 
 public class ConfigProfile extends AppCompatActivity {
@@ -21,7 +20,7 @@ public class ConfigProfile extends AppCompatActivity {
     private EditText name, email, direccion;
     private User user1;
     private String nombre, correo, direc;
-    private Button cerrar;
+    private Button guardar, cerrar;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
@@ -36,7 +35,8 @@ public class ConfigProfile extends AppCompatActivity {
         name = findViewById(R.id.nameRepartidor);
         email = findViewById(R.id.emailED);
         direccion = findViewById(R.id.direccionED);
-        cerrar = findViewById(R.id.btnCerrar);
+        guardar = findViewById(R.id.btnGuardar);
+
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         user1 = (User) getIntent().getExtras().get("user");
@@ -57,7 +57,7 @@ public class ConfigProfile extends AppCompatActivity {
 
 
 
-            cerrar.setOnClickListener(
+            guardar.setOnClickListener(
                  (v)->{
 
                      nombre =  name.getText().toString();
@@ -69,6 +69,7 @@ public class ConfigProfile extends AppCompatActivity {
 
                     }
                 );
+
 
 
 

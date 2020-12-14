@@ -57,11 +57,12 @@
 
     <Button
         android:id="@+id/CreateProductButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SecondButton"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/buttonstyles"
         android:text="Agregar "
+        android:textAlignment="gravity"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cancelAddProductbutton"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,9 +83,9 @@
 
     <Button
         android:id="@+id/cancelAddProductbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/buttonstyles"
+        style="@style/SecondButton"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
         android:text="cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

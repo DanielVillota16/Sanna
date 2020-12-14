@@ -13,7 +13,7 @@
         android:layout_marginTop="15dp"
         android:text="Inventario"
         android:textColor="#000000"
-        android:textSize="36sp"
+        android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/InventoryReturnBtn" />
@@ -25,7 +25,7 @@
         android:layout_marginTop="24dp"
         android:text="Productos Registrados:"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:text="200"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/productRegisteredTV"
         app:layout_constraintStart_toEndOf="@+id/productRegisteredTV"
         app:layout_constraintTop_toTopOf="@+id/productRegisteredTV" />
@@ -54,9 +54,9 @@
 
     <Button
         android:id="@+id/InventoryReturnBtn"
-        style="@style/buttons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SecondButton"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="50dp"
         android:text="Menu"
@@ -66,9 +66,9 @@
 
     <Button
         android:id="@+id/AddProductBtn"
-        style="@style/buttons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/SecondButton"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="33dp"
         android:text="+"
