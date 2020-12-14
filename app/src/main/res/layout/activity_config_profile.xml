@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ConfigProfile">
+    tools:context=".client.delivery.ConfigProfile">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,8 +34,8 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:background="@drawable/userconfig"
@@ -167,7 +167,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
             <EditText
-                android:id="@+id/ciudadED"
+                android:id="@+id/direccionED"
                 android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="37dp"
@@ -189,7 +189,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginBottom="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/ciudadED"></LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/direccionED"></LinearLayout>
 
         </LinearLayout>
     </ScrollView>

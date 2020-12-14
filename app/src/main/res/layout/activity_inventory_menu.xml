@@ -10,13 +10,13 @@
         android:id="@+id/InventoryTitleTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="15dp"
         android:text="Inventario"
         android:textColor="#000000"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/InventoryReturnBtn" />
 
     <TextView
         android:id="@+id/productRegisteredTV"
@@ -54,18 +54,27 @@
 
     <Button
         android:id="@+id/InventoryReturnBtn"
+        style="@style/buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="50dp"
         android:text="Menu"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/AddProductBtn"
+        style="@style/buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="33dp"
         android:text="+"
         app:layout_constraintEnd_toEndOf="@+id/InventoryRecyclerView"
+        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintStart_toEndOf="@+id/InventoryReturnBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,8 @@
         android:id="@+id/LogOutProviderBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="33dp"
         android:text="Log Out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,18 +21,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
-        android:layout_marginEnd="72dp"
         android:text="Inventario"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ToProviderOrderBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/ToProviderOrderBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
         android:layout_marginTop="156dp"
         android:text="Ordenes"
+        app:layout_constraintEnd_toStartOf="@+id/ToInventoryBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
