@@ -1,5 +1,6 @@
 package com.sanna_app.sanna.list.OrderProvider;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,8 @@ public class OrderProviderAdapter extends RecyclerView.Adapter<OrderPViewModel> 
             holder.getOrderBtn().setOnClickListener(
                     v->listener.OnOrderClick(orders.get(position))
             );
+        }else{
+            holder.getIv().setBackgroundResource(R.drawable.check);
         }
     }
 
