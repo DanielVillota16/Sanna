@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -15,7 +16,7 @@ import com.sanna_app.sanna.R;
 import com.sanna_app.sanna.list.OrderProvider.OrderProviderAdapter;
 import com.sanna_app.sanna.model.Order;
 
-public class ListaPedido extends AppCompatActivity {
+public class ListaPedido extends AppCompatActivity implements View.OnClickListener, OrderProviderAdapter.OnOrderClickListener {
 
     private RecyclerView orders;
     private OrderProviderAdapter adapter;
@@ -35,7 +36,7 @@ public class ListaPedido extends AppCompatActivity {
 	db=FirebaseFirestore.getInstance();
     orders = findViewById(R.id.ordersList);
     adapter=new OrderProviderAdapter();
-
+    adapter.setListener(this);
     layoutManager = new GridLayoutManager(this,1);
     orders.setAdapter(adapter);
     orders.setLayoutManager(layoutManager);
@@ -66,5 +67,15 @@ public class ListaPedido extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
+    @Override
+    public void OnOrderClick(Order o) {
+
     }
 }

@@ -39,6 +39,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private FirebaseFirestore db;
     private SignInButton google;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,11 +87,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 task -> {
                     DocumentSnapshot snapshot=task.getResult();
                     User u = snapshot.toObject(User.class);
-                    sortRole(u.getRole());
+                    sortRole(u.getRole(),u);
                 });
     }
 
-    private void sortRole(int u) {
+    private void sortRole(int u, User p) {
         if(u != 0) {
             Intent i;
             switch (u){
@@ -102,6 +103,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     break;
                 default:
                     i = new Intent(this, DeliveryHome.class);
+                    i.putExtra("user",p);
                     break;
             }
                startActivity(i);
@@ -170,7 +172,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         if(t.isSuccessful()){
                             DocumentSnapshot doc=t.getResult();
                             User u=doc.toObject(User.class);
-                            sortRole(u.getRole());
+                            sortRole(u.getRole(),u);
                         }else{
                             User newU=new User();
                             newU.setId(account.getId());
@@ -181,7 +183,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             db.collection("users").document(newU.getId()).set(newU).addOnCompleteListener(
                                     task2->{
                                         if(task2.isSuccessful()){
-                                            sortRole(newU.getRole());
+                                            sortRole(newU.getRole(),newU);
                                         }
                                     }
                             );

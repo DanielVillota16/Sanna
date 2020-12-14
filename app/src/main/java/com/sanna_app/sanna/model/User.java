@@ -1,6 +1,8 @@
 package com.sanna_app.sanna.model;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String id,name, email,address;
     private int role;
 

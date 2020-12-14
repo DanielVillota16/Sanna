@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.gson.Gson;
 import com.sanna_app.sanna.R;
+import com.sanna_app.sanna.model.User;
 
 public class DeliveryHome extends AppCompatActivity {
 
@@ -17,12 +19,15 @@ public class DeliveryHome extends AppCompatActivity {
     private MapsFragment mapsFragment;
     private ProfileFragment profileFragment;
     private BottomNavigationView navbar;
+    private User user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_home);
 
+        user = (User)getIntent().getExtras().get("user");
     navbar = findViewById(R.id.navBarR);
 
 
@@ -55,6 +60,11 @@ public class DeliveryHome extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragmentContainerR,fragment);
         transaction.commit();
+        Gson gson= new Gson();
+
+        Bundle bundle = new Bundle();
+        bundle.putString("user",gson.toJson(user));
+        fragment.setArguments(bundle);
     }
 
 
