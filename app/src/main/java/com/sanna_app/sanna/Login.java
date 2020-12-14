@@ -87,9 +87,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 task -> {
                     DocumentSnapshot snapshot=task.getResult();
                     User u = snapshot.toObject(User.class);
-                    /**for(DocumentSnapshot doc : task.getResult()){
-                        u = doc.toObject(User.class);
-                    }*/
                     sortRole(u.getRole());
                 });
     }
@@ -108,7 +105,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     i = new Intent(this, DeliveryHome.class);
                     break;
             }
-            startActivity(i);
+               startActivity(i);
             this.finish();
         } else
             Toast.makeText(this, "No se encontró el usuario!", Toast.LENGTH_LONG).show();
@@ -190,8 +187,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     }
                             );
                         }
-
-
                     }
             );
         }catch (Exception e){

@@ -17,6 +17,16 @@
         <activity android:name=".DeliveryHome"></activity>
         <activity android:name=".ConfigProfile"/>
         <activity android:name=".ListaPedido"/>
+        <activity android:name=".client.order.ShoppingCartActivity"></activity>
+        <activity android:name=".client.order.OrderDetailsActivity" />
+        <activity android:name=".product.recycler.ProductDetails" />
+        <activity android:name=".addProductActivity" />
+        <activity android:name=".OrderMenu" />
+        <activity
+            android:name=".CreateProduct"
+            android:label="@string/title_activity_create_product" />
+        <activity android:name=".InventoryMenu" />
+        <activity android:name=".DeliveryHome" />
         <activity android:name=".ProviderHome" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ClientHome" />
