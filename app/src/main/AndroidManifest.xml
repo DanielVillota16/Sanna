@@ -26,7 +26,7 @@
         <activity android:name=".InventoryMenu" />
 
 
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAuiL9oXwwJUqMZJfR8QzWOeX5OgX5Ncjc"/>
+
         <activity android:name=".delivery.DeliveryHome"></activity>
         <activity android:name=".delivery.ConfigProfile"/>
         <activity android:name=".delivery.ListaPedido"/>
