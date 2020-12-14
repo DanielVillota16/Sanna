@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Sanna">
         <activity android:name=".DeliveryHome"></activity>
+        <activity android:name=".ConfigProfile"/>
+        <activity android:name=".ListaPedido"/>
         <activity android:name=".ProviderHome" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ClientHome" />

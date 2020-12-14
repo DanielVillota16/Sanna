@@ -14,7 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class DeliveryHome extends AppCompatActivity {
 
 
-    private MapsFragment mapsFragment;
+ //   private MapsFragment mapsFragment;
     private ProfileFragment profileFragment;
     private BottomNavigationView navbar;
 
@@ -26,7 +26,7 @@ public class DeliveryHome extends AppCompatActivity {
     navbar = findViewById(R.id.navBarR);
 
 
-    mapsFragment = MapsFragment.newInstance();
+   // mapsFragment = MapsFragment.newInstance();
         profileFragment = ProfileFragment.newInstance();
 
         showFragment(profileFragment);
@@ -37,7 +37,7 @@ public class DeliveryHome extends AppCompatActivity {
                     switch (menuItem.getItemId()) {
 
                         case R.id.mapView:
-                            showFragment(mapsFragment);
+                       //     showFragment(mapsFragment);
                             break;
 
                         case R.id.profileView:

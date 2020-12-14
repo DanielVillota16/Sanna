@@ -10,6 +10,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_create_product">CreateProduct</string>
+
+    <string name="maps">"Mapa"</string>
+    <string name="profile">Perfil</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
