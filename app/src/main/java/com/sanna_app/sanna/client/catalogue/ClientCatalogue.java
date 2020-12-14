@@ -42,7 +42,6 @@ public class ClientCatalogue extends Fragment {
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
-
     }//closes ClientCatalogue method
 
 
@@ -75,7 +74,6 @@ public class ClientCatalogue extends Fragment {
 
             for (DocumentSnapshot doc : data.getDocuments()) {
                 Product product = doc.toObject(Product.class);
-
                 if (!productAdapter.getProducts().contains(product))
                     productAdapter.AddProduct(product);
             }

@@ -80,9 +80,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 task -> {
                     DocumentSnapshot snapshot=task.getResult();
                     User u = snapshot.toObject(User.class);
-                    /**for(DocumentSnapshot doc : task.getResult()){
-                        u = doc.toObject(User.class);
-                    }*/
                     sortRole(u.getRole());
                 });
     }
@@ -182,8 +179,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     }
                             );
                         }
-
-
                     }
             );
         }catch (Exception e){

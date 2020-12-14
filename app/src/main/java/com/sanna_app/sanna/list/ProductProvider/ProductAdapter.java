@@ -45,7 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewModel> {
     public void onBindViewHolder(@NonNull ProductViewModel holder, int position) {
         holder.getpName().setText(products.get(position).getName());
         holder.getpPrice().setText("$"+products.get(position).getPrice());
-        FirebaseStorage.getInstance().getReference().child("product").child(products.get(position).getPhoto()).getDownloadUrl()
+        FirebaseStorage.getInstance().getReference().child("products").child(products.get(position).getPhoto()).getDownloadUrl()
                 .addOnCompleteListener(
                         task -> {
                             String url=task.getResult().toString();

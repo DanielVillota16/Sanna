@@ -1,6 +1,7 @@
 package com.sanna_app.sanna.product.recycler;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.storage.FirebaseStorage;
 import com.sanna_app.sanna.R;
 import com.sanna_app.sanna.client.catalogue.ClientCatalogue;
 import com.sanna_app.sanna.model.Product;
@@ -52,8 +54,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductView> implements
     @Override
     public void onBindViewHolder(@NonNull ProductView holder, int position) {
         Product _product = products.get(position);
+        FirebaseStorage.getInstance().getReference().child("products").child(_product.getId()).getDownloadUrl()
+                .addOnCompleteListener(
+                    task -> {
+                        if(task.isSuccessful()){
+                            String url = task.getResult().toString();
+                            Log.i("URL: ",url);
+                            Glide.with(holder.getProductPic().getContext()).load(url).into(holder.getProductPic());
+                        }
+                    });
 
-        Glide.with(holder.getProductPic().getContext()).load(_product.getPhoto()).into(holder.getProductPic());
         holder.getProductName().setText(_product.getName());
         holder.getProductPrice().setText(String.valueOf(_product.getPrice()));
         holder.setProduct(_product);
