@@ -18,6 +18,10 @@
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAuiL9oXwwJUqMZJfR8QzWOeX5OgX5Ncjc"/>
 
         <activity android:name=".client.order.ShoppingCartActivity"></activity>
+        <activity android:name=".client.order.OrderFromCartActivity"></activity>
+        <activity android:name=".DeliveryHome" />
+        <activity android:name=".ConfigProfile" />
+        <activity android:name=".ListaPedido" />
         <activity android:name=".client.order.OrderDetailsActivity" />
         <activity android:name=".product.recycler.ProductDetails" />
         <activity android:name=".addProductActivity" />
