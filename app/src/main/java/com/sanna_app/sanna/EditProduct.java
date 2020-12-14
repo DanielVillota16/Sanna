@@ -50,7 +50,7 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
         suchDescriptioProductTxt = findViewById(R.id.suchDescriptioProductTxt);
         deletProductProviderBtn = findViewById(R.id.deletProductProviderBtn);
         safeProductBtn = findViewById(R.id.safeProductBtn);
-        cancelSafeProductBtn = findViewById(R.id.safeProductBtn);
+        cancelSafeProductBtn = findViewById(R.id.cancelSafeProductBtn);
 
         FirebaseStorage.getInstance().getReference().child("products").child(product.getId()).getDownloadUrl().addOnCompleteListener(
                 task -> {
