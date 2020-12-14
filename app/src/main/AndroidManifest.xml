@@ -3,6 +3,9 @@
     package="com.sanna_app.sanna">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+
 
     <application
         android:allowBackup="true"
@@ -11,9 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sanna">
-        <activity android:name=".DeliveryHome"></activity>
-        <activity android:name=".ConfigProfile"/>
-        <activity android:name=".ListaPedido"/>
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAuiL9oXwwJUqMZJfR8QzWOeX5OgX5Ncjc"/>
+        <activity android:name=".delivery.DeliveryHome"></activity>
+        <activity android:name=".delivery.ConfigProfile"/>
+        <activity android:name=".delivery.ListaPedido"/>
         <activity android:name=".ProviderHome" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ClientHome" />

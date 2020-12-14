@@ -1,4 +1,4 @@
-package com.sanna_app.sanna.client.delivery;
+package com.sanna_app.sanna.delivery;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.sanna_app.sanna.client.delivery;
+package com.sanna_app.sanna.delivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sanna_app.sanna.R;
-import com.sanna_app.sanna.client.delivery.ProfileFragment;
 
 public class DeliveryHome extends AppCompatActivity {
 

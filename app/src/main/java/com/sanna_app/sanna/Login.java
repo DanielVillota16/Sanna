@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.sanna_app.sanna.client.delivery.DeliveryHome;
+import com.sanna_app.sanna.delivery.DeliveryHome;
 import com.sanna_app.sanna.constants.Constants;
 import com.sanna_app.sanna.model.User;
 

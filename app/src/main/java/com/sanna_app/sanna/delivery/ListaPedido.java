@@ -1,4 +1,4 @@
-package com.sanna_app.sanna.client.delivery;
+package com.sanna_app.sanna.delivery;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -15,8 +14,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.sanna_app.sanna.R;
 import com.sanna_app.sanna.list.OrderProvider.OrderProviderAdapter;
 import com.sanna_app.sanna.model.Order;
-
-import java.util.Collections;
 
 public class ListaPedido extends AppCompatActivity {
 
