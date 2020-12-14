@@ -106,8 +106,7 @@ public class EditProduct extends AppCompatActivity implements View.OnClickListen
                 }else{
                     Toast.makeText(getApplicationContext(),"por favor no deje ningun campo vacio",Toast.LENGTH_SHORT).show();
                 }
-
-
+                
                 break;
         }
 
